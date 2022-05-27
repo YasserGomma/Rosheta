@@ -84,6 +84,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     Runnable runnable = new Runnable() {
+
         @Override
         public void run() {
             txt.setText(charSequence.subSequence(0, index++));
