@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
     ImageView top, bottom, logo;
     CharSequence charSequence;
     int index;
-    long delay = 100;
+    long delay = 50;
     Handler handler = new Handler();
 
     @Override
@@ -39,9 +39,9 @@ public class SplashScreen extends AppCompatActivity {
         //Start top animation
         top.setAnimation(animation1);
 
-        //Initialize object animator
+        //Initialize object animator for logo
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(
-                top,
+                logo,
                 PropertyValuesHolder.ofFloat("scaleX", 1.2f),
                 PropertyValuesHolder.ofFloat("scaleY", 1.2f)
         );
@@ -60,10 +60,10 @@ public class SplashScreen extends AppCompatActivity {
 
 
         //Set animate text
-        animatText("All Health-Care In One Place!");
+        animateText("All Health-Care In One Place!");
 
 
-        //Initialize top animation
+        //Initialize bottom animation
         Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.bottom_wave);
 
         //Start top animation
@@ -78,7 +78,7 @@ public class SplashScreen extends AppCompatActivity {
                         setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
             }
-        }, 5000);
+        }, 4000);
 
 
     }
@@ -94,7 +94,7 @@ public class SplashScreen extends AppCompatActivity {
         }
     };
 
-    public void animatText(CharSequence c) {
+    public void animateText(CharSequence c) {
         charSequence = c;
         index = 0;
         txt.setText("");
