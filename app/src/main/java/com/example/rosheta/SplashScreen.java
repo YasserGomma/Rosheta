@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
     ImageView top, bottom, logo;
     CharSequence charSequence;
     int index;
-    long delay = 50;
+    long delay = 100;
     Handler handler = new Handler();
 
     @Override
@@ -47,7 +47,7 @@ public class SplashScreen extends AppCompatActivity {
         );
 
         //Set duration
-        objectAnimator.setDuration(9000);
+        objectAnimator.setDuration(4000);
 
         //Set repeat count
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
@@ -78,7 +78,7 @@ public class SplashScreen extends AppCompatActivity {
                         setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
             }
-        }, 3000);
+        }, 4000);
 
 
     }
