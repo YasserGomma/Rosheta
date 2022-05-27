@@ -37,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.top_wave);
 
         //Start top animation
-        top.setAnimation(animation1);
+       // top.setAnimation(animation1);
 
         //Initialize object animator for logo
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(
@@ -47,7 +47,7 @@ public class SplashScreen extends AppCompatActivity {
         );
 
         //Set duration
-        objectAnimator.setDuration(500);
+        objectAnimator.setDuration(9000);
 
         //Set repeat count
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
@@ -56,7 +56,7 @@ public class SplashScreen extends AppCompatActivity {
         objectAnimator.setRepeatMode(ValueAnimator.REVERSE);
 
         //Start animator
-        objectAnimator.start();
+       objectAnimator.start();
 
 
         //Set animate text
@@ -67,7 +67,7 @@ public class SplashScreen extends AppCompatActivity {
         Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.bottom_wave);
 
         //Start top animation
-        bottom.setAnimation(animation2);
+        //bottom.setAnimation(animation2);
 
 
         //Initialize handler
@@ -78,7 +78,7 @@ public class SplashScreen extends AppCompatActivity {
                         setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
             }
-        }, 4000);
+        }, 3000);
 
 
     }

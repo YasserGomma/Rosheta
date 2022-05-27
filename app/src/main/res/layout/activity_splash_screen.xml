@@ -13,6 +13,7 @@
         android:src="@drawable/ic_top_vector" />
 
     <LinearLayout
+        android:layout_marginBottom="250dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -44,6 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
-        android:src="@drawable/ic_bottom_vector" />
+        android:src="@drawable/medical_report" />
 
 </RelativeLayout>
