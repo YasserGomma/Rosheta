@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.rosheta" >
+    package="com.example.rosheta">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,17 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rosheta"
-        tools:targetApi="31" >
-
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
-            android:exported="true" >
+            android:name=".views.pages.b_account.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".views.pages.a_intro.onBoardingScreen"
+            android:exported="false" />
+        <activity
+            android:name=".views.pages.a_intro.ChooseScreen"
+            android:exported="false"/>
+        <activity
+            android:name=".views.pages.a_intro.SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

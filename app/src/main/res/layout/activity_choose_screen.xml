@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome_lineargradient"
+    tools:context=".views.pages.a_intro.ChooseScreen">
+
+
+    <ImageView
+        android:id="@+id/img_welcome_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_welcome_t1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_welcome_logo"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/sofiapro_bold"
+        android:text="Welcome to"
+        android:textColor="#53b2f8"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/tv_welcome_t2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_welcome_t1"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="-10dp"
+        android:fontFamily="@font/sofiapro_bold"
+        android:text="Roshta"
+        android:textColor="#db7672"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/tv_welcome_t3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_welcome_t2"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="18sp"
+        android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/sofiapro_reguler"
+        android:text="Where you can find all Health-Care in one place !"
+        android:textColor="@color/white"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_welcome_t3"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/social_media_btns" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_welcome_start"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/btn_bg_2"
+            android:fontFamily="@font/sofiapro_reguler"
+            android:text="Start with email or phone"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <!-- Sign in text -->
+        <com.example.rosheta.views.components.TwoTexts
+            android:id="@+id/two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:tt_text_1="Already have an account?"
+            app:tt_text_1_color="@color/white"
+            app:tt_text_2="Sign in"
+            app:tt_text_2_color="@color/white" />
+    </LinearLayout>
+
+
+</RelativeLayout>
