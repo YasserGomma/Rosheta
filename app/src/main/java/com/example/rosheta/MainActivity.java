@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EndPoints Api = RetrofitCreation.getInstance();
 
         EditText email,password;
         email=findViewById(R.id.mail);
         password=findViewById(R.id.pass);
-
-
         Button btn=findViewById(R.id.login);
+
+
+        EndPoints Api = RetrofitCreation.getInstance();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
 
 
 
