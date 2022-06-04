@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".views.pages.b_account.Login">
+    <!-- Page Header-->
+    <include
+        android:id="@+id/header_cart"
+        layout="@layout/header_back"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_cart"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
+            <!-- Page Title-->
+            <com.example.rosheta.views.widgets.PageTitleText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log in" />
+            <!-- Email-->
+            <com.example.rosheta.views.components.InputField
+                android:id="@+id/login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:if_hint="Enter your email"
+                app:if_label="Email" />
+            <!-- Password-->
+            <com.example.rosheta.views.components.InputField
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:if_hint="Enter your password"
+                app:if_label="Password"
+                app:if_password="1" />
+            <!-- Forget Password-->
+            <com.example.rosheta.views.widgets.IllustrativeText
+                android:id="@+id/tv_login_forget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:gravity="center"
+                android:text="Forgot password?"
+                android:textColor="@color/primary_color" />
+            <!-- Login Button-->
+            <com.example.rosheta.views.widgets.MainButton
+                android:id="@+id/btn_login_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:text="Login" />
+            <!-- Sign up text -->
+            <com.example.rosheta.views.components.TwoTexts
+                android:id="@+id/login_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                app:tt_text_1="Don’t have an account?"
+                app:tt_text_1_color="@color/hint_color"
+                app:tt_text_2="Sign Up"
+                app:tt_text_2_color="@color/primary_color" />
+            <!-- Social Buttons-->
+            <include layout="@layout/social_media_btns" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
