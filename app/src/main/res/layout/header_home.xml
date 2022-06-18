@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/back_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_home_header_menu"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="2dp"
+        android:background="@drawable/btn_bg_4"
+        android:clickable="true"
+        android:drawableTop="@drawable/menu"
+        android:paddingTop="15dp" />
+
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_home_header_photo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_bg_4"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bussiness_man"
+        app:riv_corner_radius="15dp" />
+
+</RelativeLayout>

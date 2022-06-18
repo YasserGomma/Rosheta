@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/background"
+    tools:context=".ExaminationDetails">
+
+    <com.example.rosheta.views.components.HeaderBar
+        android:id="@+id/examination_details_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@id/examination_details_header"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_examination_details_doc_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Doctor Name"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sofiapro_reguler"
+                android:text="prescription id"
+                android:textColor="@color/primary_color"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_id"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="6dp"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:fontFamily="@font/sofiapro_reguler"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxWidth="150dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="2022-05-25T18:55:20.000000Z"
+                android:textColor="#F87474"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_doc_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_doc_name"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/sofiapro_reguler"
+                android:text="Specialization"
+                android:textColor="#F87474"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_examination_details_date"
+                android:layout_marginVertical="5dp"
+                android:background="@color/primary_color" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/sofiapro_semibold"
+                android:text="Report : "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_1"
+                android:background="@drawable/et_bg_1"
+                android:fontFamily="@font/sofiapro_reguler"
+                android:padding="10dp"
+                android:text="elwad 2lbo beyog3o"
+                android:textColor="@color/primary_color"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_report"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/sofiapro_semibold"
+                android:text="Medicines : "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_examination_details_medicines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_2"
+                android:background="@drawable/et_bg_1"
+                android:fontFamily="@font/sofiapro_reguler"
+                android:padding="10dp"
+                android:text="1 - Panadol \n2 - Congstal\n3 - Modad 7ayoe"
+                android:textColor="@color/primary_color"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tv_examination_details_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_examination_details_medicines"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/sofiapro_semibold"
+                android:text="Notes : "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_examination_details_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_3"
+                android:background="@drawable/et_bg_1"
+                android:fontFamily="@font/sofiapro_reguler"
+                android:padding="10dp"
+                android:text="Tamam"
+                android:textColor="@color/primary_color"
+                android:textSize="18sp" />
+
+            <com.example.rosheta.views.widgets.MainButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_examination_details_notes"
+                android:layout_marginTop="20dp"
+                android:text="Get your Medicines now!"
+                />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

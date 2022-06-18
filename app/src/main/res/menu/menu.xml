@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboard"
+        android:icon="@drawable/dashboard"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/roles"
+        android:icon="@drawable/group"
+        android:title="My Roles" />
+    <item
+        android:id="@+id/diseases"
+        android:icon="@drawable/syringe"
+        android:title="Medicines" />
+    <item
+        android:id="@+id/payment"
+        android:icon="@drawable/disease_prevention"
+        android:title="Diseases" />
+    <item
+        android:id="@+id/examinations"
+        android:icon="@drawable/examination"
+        android:title="Examinations" />
+    <item
+        android:id="@+id/examinations_request"
+        android:icon="@drawable/test"
+        android:title="Examinations Requests" />
+
+    <item
+        android:id="@+id/qr_code"
+        android:icon="@drawable/qr_code"
+        android:title="Get Yout ID" />
+</menu>

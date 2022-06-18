@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.pages.c_home.Examinations">
+    <com.example.rosheta.views.components.HeaderBar
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/examinations_header"
+        />
+
+    <com.example.rosheta.views.widgets.MainEditText
+        android:id="@+id/et_examinations_search"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/examinations_header"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/search"
+        android:drawablePadding="5dp"
+        android:hint="Search Here"
+        android:textColor="@color/hint_color"
+        app:text_size="15" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:clipToPadding="false"
+        android:id="@+id/rv_examinations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_examinations_search" />
+</RelativeLayout>

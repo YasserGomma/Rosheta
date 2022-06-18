@@ -95,6 +95,9 @@ public class Login extends BaseActivity {
                 editor.putString("mail", email);
                 editor.putString("pass", password);
                 editor.apply();
+                Toast.makeText(getApplicationContext(),
+                        response.body().getEmail(),
+                        Toast.LENGTH_SHORT).show();
                 go_screen(Login.this, Home.class);
             }
 

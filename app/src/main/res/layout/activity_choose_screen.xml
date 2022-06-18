@@ -19,6 +19,21 @@
         android:src="@drawable/logo" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/skip"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:background="@drawable/et_bg"
+        android:padding="10dp"
+        android:fontFamily="@font/sofiapro_reguler"
+        android:layout_alignParentBottom="true"
+        android:text="Skip to home" />
+
+    <TextView
         android:id="@+id/tv_welcome_t1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,11 +62,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_welcome_t2"
         android:layout_marginHorizontal="20dp"
-        android:textSize="18sp"
-        android:lineSpacingExtra="4dp"
         android:fontFamily="@font/sofiapro_reguler"
+        android:lineSpacingExtra="4dp"
         android:text="Where you can find all Health-Care in one place !"
         android:textColor="@color/white"
+        android:textSize="18sp"
 
         />
 

@@ -95,7 +95,7 @@
                     app:ccp_textSize="15dp" />
 
                 <EditText
-                    android:id="@+id/et_phone_registration_phone"
+                    android:id="@+id/et_signup_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_weight="1"

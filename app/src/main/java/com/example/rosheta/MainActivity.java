@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        Log.e("res", response.body().name );
+                        Log.e("res", response.body().email );
                     }
 
                     @Override

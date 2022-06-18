@@ -1,14 +1,25 @@
 package com.example.rosheta.views.pages.a_intro;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rosheta.R;
+import com.example.rosheta.data.source.remote.User;
+import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.components.TwoTexts;
+import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.b_account.Login;
+import com.example.rosheta.views.pages.c_home.Home;
 import com.example.rosheta.views.pages.parents.BaseActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChooseScreen extends BaseActivity {
 
@@ -33,6 +44,38 @@ public class ChooseScreen extends BaseActivity {
             @Override
             public void onClick(View view) {
                 go_screen(ChooseScreen.this, Login.class);
+            }
+        });
+
+        TextView skip;
+        skip=findViewById(R.id.skip);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(ChooseScreen.this);
+                String mail = preferences.getString("mail", "");
+                String password = preferences.getString("pass", "");
+
+                if (!mail.equalsIgnoreCase("") && !password.equalsIgnoreCase("")) {
+                    EndPoints Api = RetrofitCreation.getInstance();
+                    Call<User> call = Api.login(mail, password);
+                    call.enqueue(new Callback<User>() {
+                        @Override
+                        public void onResponse(Call<User> call, Response<User> response) {
+                            Login.user = response.body();
+                            go_screen(ChooseScreen.this, Home.class);
+                        }
+
+                        @Override
+                        public void onFailure(Call<User> call, Throwable t) {
+
+                        }
+                    });
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please login first",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
