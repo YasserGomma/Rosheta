@@ -29,7 +29,7 @@ public class ChooseScreen extends BaseActivity {
         setContentView(R.layout.activity_choose_screen);
 
         //Go to Sign up screen via on boarding screen
-        Button btn=findViewById(R.id.btn_welcome_start);
+        Button btn = findViewById(R.id.btn_welcome_start);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +48,7 @@ public class ChooseScreen extends BaseActivity {
         });
 
         TextView skip;
-        skip=findViewById(R.id.skip);
+        skip = findViewById(R.id.skip);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.top_wave);
 
         //Start top animation
-       // top.setAnimation(animation1);
+        // top.setAnimation(animation1);
 
         //Initialize object animator for logo
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(
@@ -58,7 +58,7 @@ public class SplashScreen extends AppCompatActivity {
         objectAnimator.setRepeatMode(ValueAnimator.REVERSE);
 
         //Start animator
-       objectAnimator.start();
+        objectAnimator.start();
 
 
         //Set animate text
@@ -85,7 +85,13 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-    Runnable runnable = new Runnable() {
+    public void animateText(CharSequence c) {
+        charSequence = c;
+        index = 0;
+        txt.setText("");
+        handler.removeCallbacks(runnable);
+        handler.postDelayed(runnable, delay);
+    }    Runnable runnable = new Runnable() {
 
         @Override
         public void run() {
@@ -96,11 +102,5 @@ public class SplashScreen extends AppCompatActivity {
         }
     };
 
-    public void animateText(CharSequence c) {
-        charSequence = c;
-        index = 0;
-        txt.setText("");
-        handler.removeCallbacks(runnable);
-        handler.postDelayed(runnable, delay);
-    }
+
 }

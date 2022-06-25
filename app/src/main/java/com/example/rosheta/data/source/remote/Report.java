@@ -2,29 +2,13 @@ package com.example.rosheta.data.source.remote;
 
 import java.util.Date;
 
-public class Medicines {
+public class Report {
     private int id;
     private String name;
     private String description;
-    private Object photo;
-    private double price;
     private Date created_at;
     private Date updated_at;
-    private Pivot pivot;
-
-    public Medicines() {
-    }
-
-    public Medicines(int id, String name, String description, Object photo, double price, Date created_at, Date updated_at, Pivot pivot) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.photo = photo;
-        this.price = price;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-        this.pivot = pivot;
-    }
+    private Pivot_diseases pivot;
 
     public int getId() {
         return id;
@@ -50,22 +34,6 @@ public class Medicines {
         this.description = description;
     }
 
-    public Object getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Object photo) {
-        this.photo = photo;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public Date getCreated_at() {
         return created_at;
     }
@@ -82,11 +50,11 @@ public class Medicines {
         this.updated_at = updated_at;
     }
 
-    public Pivot getPivot() {
+    public Pivot_diseases getPivot() {
         return pivot;
     }
 
-    public void setPivot(Pivot pivot) {
+    public void setPivot(Pivot_diseases pivot) {
         this.pivot = pivot;
     }
 }

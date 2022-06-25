@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.pages.c_home.ExaminationRequests">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.rosheta.views.components.HeaderBar
+                android:id="@+id/examinations_request_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.example.rosheta.views.widgets.MainEditText
+                android:id="@+id/et_examinations_request_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/examinations_request_header"
+                android:layout_marginVertical="10dp"
+                app:text_size="20" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_examinations_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_examinations_request_search"
+                android:clipToPadding="false" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

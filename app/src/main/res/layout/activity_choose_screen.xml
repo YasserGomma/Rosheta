@@ -19,19 +19,19 @@
         android:src="@drawable/logo" />
 
     <TextView
+        android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
         android:layout_alignParentRight="true"
-        android:id="@+id/skip"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        android:background="@drawable/et_bg"
-        android:padding="10dp"
-        android:fontFamily="@font/sofiapro_reguler"
         android:layout_alignParentBottom="true"
-        android:text="Skip to home" />
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/et_bg"
+        android:fontFamily="@font/sofiapro_reguler"
+        android:padding="10dp"
+        android:text="Skip to home"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/tv_welcome_t1"

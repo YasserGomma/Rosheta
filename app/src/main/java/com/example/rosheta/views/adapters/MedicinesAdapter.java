@@ -36,7 +36,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
     @Override
     public void onBindViewHolder(MedicinesItemViewHolder holder, int position) {
 
-        Medicines item =medicines.get(position);
+        Medicines item = medicines.get(position);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +45,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
         });
         holder.item_medicine_name.setText(item.getName());
         holder.item_medicine_description.setText(item.getDescription());
-        holder.item_medicine_price.setText("Price : "+item.getPrice()+"");
+        holder.item_medicine_price.setText("Price : " + item.getPrice() + "");
 
 
     }
@@ -61,7 +61,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.Medi
 
         public MedicinesItemViewHolder(View itemView) {
             super(itemView);
-            layout = itemView.findViewById(R.id.item_medicine_layout);
+            layout = itemView.findViewById(R.id.item_report_layout);
             item_medicine_name = itemView.findViewById(R.id.item_medicine_name);
             item_medicine_description = itemView.findViewById(R.id.item_medicine_description);
             item_medicine_price = itemView.findViewById(R.id.item_medicine_price);

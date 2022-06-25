@@ -23,21 +23,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText email,password;
-        email=findViewById(R.id.mail);
-        password=findViewById(R.id.pass);
-        Button btn=findViewById(R.id.login);
+        EditText email, password;
+        email = findViewById(R.id.mail);
+        password = findViewById(R.id.pass);
+        Button btn = findViewById(R.id.login);
 
 
         EndPoints Api = RetrofitCreation.getInstance();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<User> call = Api.login(email.getText().toString(),password.getText().toString());
+                Call<User> call = Api.login(email.getText().toString(), password.getText().toString());
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        Log.e("res", response.body().email );
+                        Log.e("res", response.body().email);
                     }
 
                     @Override
@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
-
-
 
 
     }

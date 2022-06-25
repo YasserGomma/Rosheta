@@ -11,15 +11,15 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rosheta.ExaminationDetails;
 import com.example.rosheta.R;
 import com.example.rosheta.data.source.remote.Examination;
+import com.example.rosheta.views.pages.c_home.ExaminationDetails;
 
 import java.util.ArrayList;
 
 public class ExaminationsAdapter extends RecyclerView.Adapter<ExaminationsAdapter.ExaminationItemViewHolder> {
     public static String examinationID_Adapter = "";
-    public static Examination examination=new Examination();
+    public static Examination examination = new Examination();
     ArrayList<Examination> examinations = new ArrayList<>();
     Context context;
 
@@ -49,7 +49,7 @@ public class ExaminationsAdapter extends RecyclerView.Adapter<ExaminationsAdapte
             holder.layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    examination=item;
+                    examination = item;
                     examinationID_Adapter = (item.getId() + "");
                     Intent i = new Intent(context, ExaminationDetails.class);
                     context.startActivity(i);

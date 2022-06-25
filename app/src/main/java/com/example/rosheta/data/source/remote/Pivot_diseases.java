@@ -2,9 +2,9 @@ package com.example.rosheta.data.source.remote;
 
 import java.util.Date;
 
-public class Pivot {
+public class Pivot_diseases {
     private int examination_id;
-    private int medicine_id;
+    private int disease_id;
     private Date created_at;
     private Date updated_at;
 
@@ -16,12 +16,12 @@ public class Pivot {
         this.examination_id = examination_id;
     }
 
-    public int getMedicine_id() {
-        return medicine_id;
+    public int getDisease_id() {
+        return disease_id;
     }
 
-    public void setMedicine_id(int medicine_id) {
-        this.medicine_id = medicine_id;
+    public void setDisease_id(int disease_id) {
+        this.disease_id = disease_id;
     }
 
     public Date getCreated_at() {

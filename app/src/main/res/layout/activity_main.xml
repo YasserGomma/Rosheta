@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <EditText
-        android:layout_marginTop="20dp"
         android:id="@+id/mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="20dp" />
+
     <EditText
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/mail"
         android:id="@+id/pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_below="@id/mail"
+        android:layout_marginTop="20dp" />
+
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="login"
         android:layout_below="@id/pass"
         android:layout_marginTop="20dp"
-        />
+        android:text="login" />
 
 </RelativeLayout>

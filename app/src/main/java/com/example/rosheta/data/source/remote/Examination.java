@@ -11,7 +11,10 @@ public class Examination {
     private Date updated_at;
     private String doctor_name;
     private double price;
-    public Examination(){}
+
+    public Examination() {
+    }
+
     public Examination(int id, int patient_id, int doctor_id, String report, Date created_at, Date updated_at, String doctor_name, double price) {
         this.id = id;
         this.patient_id = patient_id;

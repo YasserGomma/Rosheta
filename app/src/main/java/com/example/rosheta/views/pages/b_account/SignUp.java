@@ -16,8 +16,6 @@ import com.example.rosheta.views.components.InputField;
 import com.example.rosheta.views.components.TwoTexts;
 import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.parents.BaseActivity;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,14 +94,14 @@ public class SignUp extends BaseActivity {
                 phone = et_signup_phone.getText().toString();
 
                 EndPoints Api = RetrofitCreation.getInstance();
-                UserR userR=new UserR(full_name,id,phone,email,password2,password);
-                Log.e("user",userR.toString());
+                UserR userR = new UserR(full_name, id, phone, email, password2, password);
+                Log.e("user", userR.toString());
 
                 Call<User> call = Api.register(userR);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        Log.e("register success",response.body().email);
+                        Log.e("register success", response.body().email);
                         Toast.makeText(getApplicationContext(),
                                 response.body().toString(),
                                 Toast.LENGTH_LONG).show();
@@ -111,9 +109,9 @@ public class SignUp extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Log.e("register fail", t.getMessage().toString());
+                        Log.e("register fail", t.getMessage());
                         Toast.makeText(getApplicationContext(),
-                                t.getMessage()  ,
+                                t.getMessage(),
                                 Toast.LENGTH_LONG).show();
                     }
                 });

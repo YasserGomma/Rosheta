@@ -1,11 +1,8 @@
 package com.example.rosheta.views.pages.b_account;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -85,7 +82,7 @@ public class Login extends BaseActivity {
     void checkLogin(String email, String password, CallBack callback) {
         EndPoints Api = RetrofitCreation.getInstance();
 
-        Call<User> call = Api.login(email,password);
+        Call<User> call = Api.login(email, password);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

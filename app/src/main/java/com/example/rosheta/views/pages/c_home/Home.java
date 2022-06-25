@@ -1,5 +1,8 @@
 package com.example.rosheta.views.pages.c_home;
 
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
@@ -9,25 +12,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.bumptech.glide.Glide;
 import com.example.rosheta.R;
 import com.example.rosheta.views.pages.a_intro.ChooseScreen;
 import com.example.rosheta.views.pages.b_account.Login;
 import com.example.rosheta.views.pages.parents.BaseActivity;
+import com.example.rosheta.views.pages.parents.GPSTracker;
 import com.google.android.material.navigation.NavigationView;
 
-public class Home extends BaseActivity {
+import java.util.List;
 
+
+
+public class Home extends BaseActivity{
+    public static Double latitude, longitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        GPSTracker mGPS = new GPSTracker(this);
 
+        TextView text = (TextView) findViewById(R.id.add);
+        if (mGPS.canGetLocation) {
+            mGPS.getLocation();
+            latitude=mGPS.getLatitude();
+            longitude=mGPS.getLongitude();
+            text.setText(BaseActivity.getCompleteAddressString(this, mGPS.getLatitude(), mGPS.getLongitude()));
+        } else {
+            text.setText("Unabletofind");
+        }
 
         NavigationView navigationView = findViewById(R.id.navigationView);
         View headerView = navigationView.getHeaderView(0);
@@ -45,15 +60,15 @@ public class Home extends BaseActivity {
             }
         });
 
-        navUsername.setText(Login.user.getName());
+//        navUsername.setText(Login.user.getName());
         navUserEmail.setText(Login.user.getEmail());
         DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
-       findViewById(R.id.btn_home_header_menu).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               drawerLayout.openDrawer(GravityCompat.START);
-           }
-       });
+        findViewById(R.id.btn_home_header_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
 
         navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
@@ -61,6 +76,7 @@ public class Home extends BaseActivity {
         initNavigationMenu();
 
     }
+
     private void initNavigationMenu() {
         NavigationView navigationView = findViewById(R.id.navigationView);
         final DrawerLayout drawer = findViewById(R.id.drawerlayout);
@@ -80,7 +96,11 @@ public class Home extends BaseActivity {
             case R.id.examinations:
                 go_screen(Home.this, Examinations.class);
                 break;
+            case R.id.examinations_request:
+                go_screen(Home.this, ExaminationRequests.class);
+                break;
             default:
+                break;
 
         }
     }
