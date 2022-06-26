@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Rosheta"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCJv8cTkf-d57zjvWRmZZOD22rnSP8NYK0" />
         <activity
             android:name=".views.pages.c_home.ExaminationRequests"
             android:exported="false" />
