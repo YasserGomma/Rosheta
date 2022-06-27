@@ -9,9 +9,9 @@
     tools:context=".views.pages.c_home.Home">
 
     <RelativeLayout
-        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp">
 
         <include
             android:id="@+id/home_header"
@@ -20,8 +20,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_below="@id/home_header"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/home_header">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -32,31 +32,30 @@
                     android:id="@+id/clinics"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/opensans_bold"
                     android:text="Clinics"
                     android:textColor="@color/primary_color2"
-                    android:fontFamily="@font/opensans_bold"
-                    android:textSize="20sp"
-                    android:layout_marginVertical="10dp"
-                    />
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_below="@id/clinics"
-                    android:clipToPadding="false"
                     android:id="@+id/rv_home_clinics"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/clinics"
+                    android:layout_marginHorizontal="10dp"
+                    android:clipToPadding="false" />
+
                 <TextView
                     android:id="@+id/pharmacies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pharmacies"
                     android:layout_below="@id/rv_home_clinics"
-                    android:textColor="@color/primary_color2"
-                    android:fontFamily="@font/opensans_bold"
-                    android:textSize="20sp"
                     android:layout_marginVertical="10dp"
-                    />
+                    android:fontFamily="@font/opensans_bold"
+                    android:text="Pharmacies"
+                    android:textColor="@color/primary_color2"
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_home_pharmacies"
@@ -65,11 +64,14 @@
                     android:layout_below="@id/pharmacies"
                     android:layout_marginHorizontal="10dp"
                     android:clipToPadding="false" />
-                <Button
+
+                <com.example.rosheta.views.widgets.MainButton
                     android:id="@+id/btnGetLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rv_home_pharmacies"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
                     android:text="get ur location" />
 
                 <TextView
@@ -77,34 +79,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rv_home_pharmacies"
-                    android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:maxWidth="200dp"
-                    android:text="get ur location" />
+                    android:text="get ur location"
+                    android:textColor="@color/primary_color2" />
 
-                <fragment
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/lbl_src"
-                    android:layout_marginTop="30dp" />
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/et_bg_1"
+                    android:padding="10dp">
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp" />
+                </LinearLayout>
 
             </RelativeLayout>
 
 
         </ScrollView>
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_alignParentBottom="true"
             android:id="@+id/add"
-            android:textColor="@color/black"
-            android:textSize="100dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="100dp"
-            android:text=""/>
-
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="100dp" />
 
 
     </RelativeLayout>

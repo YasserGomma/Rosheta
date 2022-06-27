@@ -4,15 +4,8 @@ public class Pharmacy {
     private int id;
     private String name;
     private double distance;
-
-    public Pharmacy(int id, String name, double distance) {
-        this.id = id;
-        this.name = name;
-        this.distance = distance;
-    }
-
-    public Pharmacy() {
-    }
+    private String lat;
+    private String lng;
 
     public int getId() {
         return id;
@@ -24,5 +17,13 @@ public class Pharmacy {
 
     public double getDistance() {
         return distance;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public String getLng() {
+        return lng;
     }
 }

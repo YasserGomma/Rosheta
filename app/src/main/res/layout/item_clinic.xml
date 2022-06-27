@@ -25,9 +25,9 @@
 
 
             <ImageView
+                android:id="@+id/pharmacy_pic"
                 android:layout_width="35dp"
                 android:layout_height="50dp"
-                android:id="@+id/pharmacy_pic"
                 android:adjustViewBounds="true"
                 android:src="@drawable/hospital" />
 

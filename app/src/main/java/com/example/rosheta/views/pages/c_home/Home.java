@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
@@ -37,6 +38,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.rosheta.R;
 import com.example.rosheta.data.source.remote.Clinc;
 import com.example.rosheta.data.source.remote.Pharmacy;
+import com.example.rosheta.interfaces.CallBack;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.ClinicAdapter;
 import com.example.rosheta.views.adapters.PharmacyAdapter;
@@ -69,12 +71,14 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
     TextView showLocation;
     LocationManager locationManager;
     String latitude, longitude;
+    double lat ;
+    double longi;
     SupportMapFragment map;
     int count = 0;
 
     LatLng source;
     LatLng destination;
-    GoogleMap googleMap;
+    public static GoogleMap googleMap;
     private static final int REQUEST_LOCATION = 1;
     Button btnGetLocation;
 
@@ -87,6 +91,7 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         ActivityCompat.requestPermissions( this,
                 new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
         showLocation = findViewById(R.id.lbl_src);
+
         btnGetLocation = findViewById(R.id.btnGetLocation);
         btnGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +104,15 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
                 }
             }
         });
+
+
+        BaseActivity.delay(500, new CallBack() {
+            @Override
+            public void onFinished() {
+                btnGetLocation.performClick();
+            }
+        });
+
 
         //Clinics
         RecyclerView recyclerView = findViewById(R.id.rv_home_clinics);
@@ -200,7 +214,6 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         msg("onCreate");
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 300);
-
         map = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         map.getMapAsync(this);
 
@@ -272,16 +285,14 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         } else {
             Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (locationGPS != null) {
-                double lat = locationGPS.getLatitude();
-                double longi = locationGPS.getLongitude();
+                 lat = locationGPS.getLatitude();
+                 longi = locationGPS.getLongitude();
                 latitude = String.valueOf(lat);
                 longitude = String.valueOf(longi);
                 showLocation.setText(BaseActivity.getCompleteAddressString(Home.this,lat,longi));
-                LatLng sydney = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
-                googleMap.addMarker(new MarkerOptions()
-                        .position(sydney)
-                        .title("Marker in damaries"));
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude)),17));
+
+
 
             } else {
                 Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
@@ -289,9 +300,9 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         }
     }
 
-    void drawRoute(LatLng source, LatLng destination) {
+       void drawRoute(LatLng source, LatLng destination) {
         StringRequest request = new StringRequest(0, "https://maps.googleapis.com/maps/api/directions/json?origin=" + source.latitude + "," + source.longitude +
-                "&destination=" + destination.latitude + "," + destination.longitude + "&key=KK&language=ar",
+                "&destination=" + destination.latitude + "," + destination.longitude + "&key=AIzaSyCJv8cTkf-d57zjvWRmZZOD22rnSP8NYK0&language=ar",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

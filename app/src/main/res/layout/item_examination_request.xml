@@ -40,10 +40,21 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/item_examination_request_status"
+                android:id="@+id/item_examination_request_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_examination_request_address"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/ge_ss_medium"
+                android:text="Date"
+                android:textColor="#F87474"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/item_examination_request_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_examination_request_date"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/sofiapro_reguler"
                 android:text="Status : "

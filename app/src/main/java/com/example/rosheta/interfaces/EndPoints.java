@@ -48,8 +48,12 @@ public interface EndPoints {
     @FormUrlEncoded
     @POST("search")
     Call<ArrayList<Clinc>> getClinic(@Field("type") String type, @Field("search") String search);
+
     @FormUrlEncoded
     @POST("search")
     Call<ArrayList<Pharmacy>> getPharmacy(@Field("type") String type, @Field("search") String search);
 
+    @FormUrlEncoded
+    @POST("examinations/reserve")
+    Call<ExaminationRequest> reserveExamination(@Field("user_id") String user_id, @Field("location_id") String location_id);
 }

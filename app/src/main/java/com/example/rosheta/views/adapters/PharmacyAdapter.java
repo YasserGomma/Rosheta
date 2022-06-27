@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.R;
 import com.example.rosheta.data.source.remote.Pharmacy;
+import com.example.rosheta.views.pages.c_home.Home;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
@@ -45,6 +50,13 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Pharma
             public void onClick(View view) {
                 pharmacy = item;
                 pharmacyID_Adapter = (item.getId()+"");
+
+                LatLng cur = new LatLng(Double.parseDouble(item.getLat()),Double.parseDouble(item.getLng()));
+                Home.googleMap.addMarker(new MarkerOptions()
+                        .position(cur)
+                        .title(item.getName()));
+                GoogleMap googleMap;
+                Home.googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cur,17));
                 //Intent i = new Intent(context, ExaminationDetails.class);
                 //  context.startActivity(i);
             }

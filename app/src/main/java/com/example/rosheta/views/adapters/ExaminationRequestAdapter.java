@@ -50,6 +50,7 @@ public class ExaminationRequestAdapter extends RecyclerView.Adapter<ExaminationR
             holder.item_examination_request_name.setText(item.getName());
             holder.item_examination_request_address.setText(BaseActivity.getCompleteAddressString(context, Double.parseDouble(item.getLat()), Double.parseDouble(item.getLng())));
             holder.item_examination_request_status.setText(item.getStatus());
+            holder.item_examination_request_date.setText(item.getCreated_at()+" ");
             if (!item.getStatus().equals("accepted")) {
                 holder.item_examination_request_status.setTextColor(Color.RED);
             }
@@ -68,7 +69,7 @@ public class ExaminationRequestAdapter extends RecyclerView.Adapter<ExaminationR
     }
 
     class ExaminationRequestItemViewHolder extends RecyclerView.ViewHolder {
-        TextView item_examination_request_name, item_examination_request_address, item_examination_request_status, item_examination_request_cnt;
+        TextView item_examination_request_name, item_examination_request_address, item_examination_request_status, item_examination_request_cnt,item_examination_request_date;
         RelativeLayout layout;
         CardView cardView;
 
@@ -80,6 +81,7 @@ public class ExaminationRequestAdapter extends RecyclerView.Adapter<ExaminationR
             item_examination_request_address = itemView.findViewById(R.id.item_examination_request_address);
             item_examination_request_status = itemView.findViewById(R.id.item_examination_request_status);
             item_examination_request_cnt = itemView.findViewById(R.id.item_examination_request_cnt);
+            item_examination_request_date=itemView.findViewById(R.id.item_examination_request_date);
             cardView = itemView.findViewById(R.id.card);
 
 

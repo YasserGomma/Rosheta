@@ -62,7 +62,7 @@ public class BaseActivity extends AppCompatActivity {
      * Handler to make delay for certain time then implement onFinished() which
      * located in CallBack interface.
      */
-    public void delay(int duration, CallBack callBack) {
+    public static void delay(int duration, CallBack callBack) {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

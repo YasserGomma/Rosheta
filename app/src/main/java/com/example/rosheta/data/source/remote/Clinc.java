@@ -6,14 +6,9 @@ public class Clinc {
     private String SName;
     private String LName;
     private double distance;
+    private String lat;
+    private String lng;
 
-    public Clinc(int id, String name, String SName, String LName, double distance) {
-        this.id = id;
-        this.name = name;
-        this.SName = SName;
-        this.LName = LName;
-        this.distance = distance;
-    }
 
     public Clinc() {
 
@@ -23,39 +18,27 @@ public class Clinc {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getSName() {
         return SName;
     }
 
-    public void setSName(String SName) {
-        this.SName = SName;
-    }
-
     public String getLName() {
         return LName;
-    }
-
-    public void setLName(String LName) {
-        this.LName = LName;
     }
 
     public double getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
+    public String getLat() {
+        return lat;
+    }
+
+    public String getLng() {
+        return lng;
     }
 }

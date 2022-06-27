@@ -1,12 +1,12 @@
 package com.example.rosheta.data.source.remote;
 
 public class UserR {
-    public String name;
-    public String national_id;
-    public String phone;
-    public String email;
-    public String password_confirmation;
-    public String password;
+    private String name;
+    private String national_id;
+    private String phone;
+    private String email;
+    private String password_confirmation;
+    private String password;
 
     public UserR(String name, String national_id, String phone, String email, String password_confirmation, String password) {
         this.name = name;
@@ -17,15 +17,27 @@ public class UserR {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "UserR{" +
-                "name='" + name + '\'' +
-                ", national_id='" + national_id + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", password_confirmation='" + password_confirmation + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public String getNational_id() {
+        return national_id;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword_confirmation() {
+        return password_confirmation;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
