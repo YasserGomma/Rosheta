@@ -65,7 +65,7 @@
         android:fontFamily="@font/sofiapro_reguler"
         android:lineSpacingExtra="4dp"
         android:text="Where you can find all Health-Care in one place !"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_color2"
         android:textSize="18sp"
 
         />

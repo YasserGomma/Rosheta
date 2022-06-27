@@ -9,11 +9,11 @@
         android:icon="@drawable/group"
         android:title="My Roles" />
     <item
-        android:id="@+id/diseases"
+        android:id="@+id/medicines"
         android:icon="@drawable/syringe"
         android:title="Medicines" />
     <item
-        android:id="@+id/payment"
+        android:id="@+id/diseases"
         android:icon="@drawable/disease_prevention"
         android:title="Diseases" />
     <item
