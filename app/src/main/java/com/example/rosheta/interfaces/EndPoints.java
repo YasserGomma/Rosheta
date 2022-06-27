@@ -1,8 +1,10 @@
 package com.example.rosheta.interfaces;
 
+import com.example.rosheta.data.source.remote.Clinc;
 import com.example.rosheta.data.source.remote.Examination;
 import com.example.rosheta.data.source.remote.ExaminationRequest;
 import com.example.rosheta.data.source.remote.Medicines;
+import com.example.rosheta.data.source.remote.Pharmacy;
 import com.example.rosheta.data.source.remote.Report;
 import com.example.rosheta.data.source.remote.User;
 import com.example.rosheta.data.source.remote.UserR;
@@ -43,5 +45,11 @@ public interface EndPoints {
     @POST("examinationRequests")
     Call<ArrayList<ExaminationRequest>> getExaminationRequest(@Field("user_id") String user_id, @Field("search") String search);
 
+    @FormUrlEncoded
+    @POST("search")
+    Call<ArrayList<Clinc>> getClinic(@Field("type") String type, @Field("search") String search);
+    @FormUrlEncoded
+    @POST("search")
+    Call<ArrayList<Pharmacy>> getPharmacy(@Field("type") String type, @Field("search") String search);
 
 }

@@ -75,10 +75,10 @@ public class ExaminationsAdapter extends RecyclerView.Adapter<ExaminationsAdapte
         public ExaminationItemViewHolder(View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.item_examination_layout);
-            tv_examination_doc_name = itemView.findViewById(R.id.tv_examination_doc_name);
-            tv_examination_price = itemView.findViewById(R.id.tv_examination_price);
-            tv_examination_date = itemView.findViewById(R.id.tv_examination_date);
-            tv_examination_id = itemView.findViewById(R.id.tv_examination_id);
+            tv_examination_doc_name = itemView.findViewById(R.id.tv_pharmacy_name);
+            tv_examination_price = itemView.findViewById(R.id.tv_pharmacy_dis);
+            tv_examination_date = itemView.findViewById(R.id.tv_doc_sp);
+            tv_examination_id = itemView.findViewById(R.id.tv_doc_name);
             cardView = itemView.findViewById(R.id.card);
             tv_examination_cnt = itemView.findViewById(R.id.tv_examination_cnt);
 

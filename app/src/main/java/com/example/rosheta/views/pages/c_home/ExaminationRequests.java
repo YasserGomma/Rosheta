@@ -36,7 +36,7 @@ public class ExaminationRequests extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         EndPoints Api = RetrofitCreation.getInstance();
         ArrayList<ExaminationRequest> examinations = new ArrayList<>();
-        Call<ArrayList<ExaminationRequest>> call = Api.getExaminationRequest(Login.user.id + "", "");
+        Call<ArrayList<ExaminationRequest>> call = Api.getExaminationRequest(Login.user.id+"", "");
         call.enqueue(new Callback<ArrayList<ExaminationRequest>>() {
             @Override
             public void onResponse(Call<ArrayList<ExaminationRequest>> call, Response<ArrayList<ExaminationRequest>> response) {

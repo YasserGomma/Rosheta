@@ -1,6 +1,7 @@
 package com.example.rosheta.views.pages.c_home;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -37,6 +38,7 @@ public class Examinations extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<Examination>> call, Response<ArrayList<Examination>> response) {
                 examinations.add(new Examination());
+                Log.e("id",Login.user.id+"");
                 for (int i = 0; i < response.body().size(); i++)
                     examinations.add(response.body().get(i));
                 ExaminationsAdapter examinationsAdapter = new ExaminationsAdapter(Examinations.this, examinations);

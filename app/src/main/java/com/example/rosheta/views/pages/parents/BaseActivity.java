@@ -37,9 +37,9 @@ public class BaseActivity extends AppCompatActivity {
             if (addresses != null) {
                 Address returnedAddress = addresses.get(0);
                 StringBuilder strReturnedAddress = new StringBuilder();
-                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
-                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
-                }
+
+                strReturnedAddress.append(returnedAddress.getAddressLine(0)).append("\n");
+
                 strAdd = strReturnedAddress.toString();
             } else {
                 Log.w("My Current loction address", "No Address returned!");

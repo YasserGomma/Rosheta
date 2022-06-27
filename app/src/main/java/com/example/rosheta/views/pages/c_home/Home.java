@@ -1,24 +1,33 @@
 package com.example.rosheta.views.pages.c_home;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,10 +35,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rosheta.R;
+import com.example.rosheta.data.source.remote.Clinc;
+import com.example.rosheta.data.source.remote.Pharmacy;
+import com.example.rosheta.interfaces.EndPoints;
+import com.example.rosheta.views.adapters.ClinicAdapter;
+import com.example.rosheta.views.adapters.PharmacyAdapter;
+import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.a_intro.ChooseScreen;
 import com.example.rosheta.views.pages.b_account.Login;
 import com.example.rosheta.views.pages.parents.BaseActivity;
-import com.example.rosheta.views.pages.parents.GPSTracker;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,35 +60,93 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class Home extends BaseActivity implements OnMapReadyCallback {
-    public static Double latitude, longitude;
+    TextView showLocation;
+    LocationManager locationManager;
+    String latitude, longitude;
     SupportMapFragment map;
     int count = 0;
 
     LatLng source;
     LatLng destination;
     GoogleMap googleMap;
+    private static final int REQUEST_LOCATION = 1;
+    Button btnGetLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        map = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        map.getMapAsync(this);
-        GPSTracker mGPS = new GPSTracker(this);
-        TextView text = (TextView) findViewById(R.id.add);
-        if (mGPS.canGetLocation) {
-            mGPS.getLocation();
-            latitude=mGPS.getLatitude();
-            longitude=mGPS.getLongitude();
-            text.setText(BaseActivity.getCompleteAddressString(this, mGPS.getLatitude(), mGPS.getLongitude()));
-        } else {
-            text.setText("Unabletofind");
-        }
+
+        ActivityCompat.requestPermissions( this,
+                new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        showLocation = findViewById(R.id.lbl_src);
+        btnGetLocation = findViewById(R.id.btnGetLocation);
+        btnGetLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    OnGPS();
+                } else {
+                    getLocation();
+                }
+            }
+        });
+
+        //Clinics
+        RecyclerView recyclerView = findViewById(R.id.rv_home_clinics);
+        StaggeredGridLayoutManager layoutManager
+                = new StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        EndPoints Api = RetrofitCreation.getInstance();
+        ArrayList<Clinc> clincs = new ArrayList<>();
+        Call<ArrayList<Clinc>> call = Api.getClinic("clinic", "");
+        call.enqueue(new Callback<ArrayList<Clinc>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Clinc>> call, retrofit2.Response<ArrayList<Clinc>> response) {
+                for (int i = 0; i < response.body().size(); i++)
+                    clincs.add(response.body().get(i));
+                ClinicAdapter clinicAdapter = new ClinicAdapter(Home.this, clincs);
+                recyclerView.setAdapter(clinicAdapter);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Clinc>> call, Throwable t) {
+
+            }
+        });
+
+        //Pharmacies
+        RecyclerView recyclerView2 = findViewById(R.id.rv_home_pharmacies);
+        StaggeredGridLayoutManager layoutManager2
+                = new StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL);
+        recyclerView2.setLayoutManager(layoutManager2);
+        ArrayList<Pharmacy> pharmacies = new ArrayList<>();
+        Call<ArrayList<Pharmacy>> call2 = Api.getPharmacy("pharmacy", "");
+        call2.enqueue(new Callback<ArrayList<Pharmacy>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Pharmacy>> call, retrofit2.Response<ArrayList<Pharmacy>> response) {
+                for (int i = 0; i < response.body().size(); i++)
+                    pharmacies.add(response.body().get(i));
+                PharmacyAdapter pharmacyAdapter = new PharmacyAdapter(Home.this, pharmacies);
+                recyclerView2.setAdapter(pharmacyAdapter);
+                recyclerView2.setItemAnimator(new DefaultItemAnimator());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Pharmacy>> call, Throwable t) {
+
+            }
+        });
+
 
         NavigationView navigationView = findViewById(R.id.navigationView);
         View headerView = navigationView.getHeaderView(0);
@@ -91,7 +164,7 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
             }
         });
 
-//        navUsername.setText(Login.user.getName());
+        navUsername.setText(Login.user.getName());
         navUserEmail.setText(Login.user.getEmail());
         DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
         findViewById(R.id.btn_home_header_menu).setOnClickListener(new View.OnClickListener() {
@@ -105,6 +178,9 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         navigationView.setItemIconTintList(null);
 
         initNavigationMenu();
+
+        // getCurrentLocation();
+
 
     }
 
@@ -120,7 +196,21 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
             }
         });
 
+
+        msg("onCreate");
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 300);
+
+        map = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        map.getMapAsync(this);
+
+
     }
+
+    void msg(String m) {
+        Log.e("-", m);
+    }
+
 
     public void menuSelection(int id) {
         switch (id) {
@@ -147,66 +237,61 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                //googleMap.clear();
-                if(count < 2){
-                    googleMap.addMarker(new MarkerOptions().
-                            position(latLng).
-                            title("nada's Hospital").icon(BitmapDescriptorFactory.fromResource(R.drawable.back)));
-                }
-                if(count == 0){
-                    source = latLng;
-                    getLocation(latLng,0);
-                }
-                if(count == 1){
-                    destination = latLng;
-                    getLocation(latLng,1);
-                    drawRoute(source,destination);
-                }
-                count++;
+
 
 
             }
         });
         googleMap.setMyLocationEnabled(true);
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(29.9846688,31.230339),17));
+      //  googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude)),17));
         //getLocation(new LatLng(29.9846688,31.230339));
 
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
-
-    void getLocation(LatLng latLng, int count){
-        StringRequest request = new StringRequest(0, "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latLng.latitude+","+latLng.longitude+"&key=K&language=ar",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject js = new JSONObject(response);
-                            JSONArray results = js.getJSONArray("results");
-                            JSONObject place = results.getJSONObject(0);
-                            String address = place.getString("formatted_address");
-
-                        } catch (JSONException e) {
-
-                        }
-                    }
-                }, new Response.ErrorListener() {
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
             }
         });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                Home.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                Home.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (locationGPS != null) {
+                double lat = locationGPS.getLatitude();
+                double longi = locationGPS.getLongitude();
+                latitude = String.valueOf(lat);
+                longitude = String.valueOf(longi);
+                showLocation.setText(BaseActivity.getCompleteAddressString(Home.this,lat,longi));
+                LatLng sydney = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
+                googleMap.addMarker(new MarkerOptions()
+                        .position(sydney)
+                        .title("Marker in damaries"));
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude)),17));
 
-        RequestQueue queue = Volley.newRequestQueue(Home.this);
-        queue.add(request);
+            } else {
+                Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
-    void drawRoute(LatLng source,LatLng destination){
-        StringRequest request = new StringRequest(0, "https://maps.googleapis.com/maps/api/directions/json?origin="+source.latitude+","+source.longitude+
-                "&destination="+destination.latitude+","+destination.longitude+"&key=KK&language=ar",
+    void drawRoute(LatLng source, LatLng destination) {
+        StringRequest request = new StringRequest(0, "https://maps.googleapis.com/maps/api/directions/json?origin=" + source.latitude + "," + source.longitude +
+                "&destination=" + destination.latitude + "," + destination.longitude + "&key=KK&language=ar",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -214,17 +299,20 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
 
                             JSONObject js = new JSONObject(response);
                             JSONArray routes = js.getJSONArray("routes");
-                            JSONObject route =  routes.getJSONObject(0);
+                            JSONObject route = routes.getJSONObject(0);
                             JSONObject leg = route.getJSONArray("legs").getJSONObject(0);
                             String distance = leg.getJSONObject("distance").getString("text");
                             String duration = leg.getJSONObject("duration").getString("text");
 
-
+                            //   TextView lbl_distance = findViewById(R.id.lbl_distance);
+                            //TextView lbl_duration = findViewById(R.id.lbl_duration);
 
                             String points = route.getJSONObject("overview_polyline").getString("points");
 
                             googleMap.addPolyline(new PolylineOptions().addAll(decodePoly(points)).color(Color.BLACK).width(8).geodesic(true));
 
+                            //  lbl_distance.setText(distance);
+                            //   lbl_duration.setText(duration);
 
                         } catch (JSONException e) {
 
@@ -241,18 +329,18 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         queue.add(request);
     }
 
-    void gotoPlace(String place_id){
-        StringRequest request = new StringRequest(0, "https://maps.googleapis.com/maps/api/place/details/json?place_id="+place_id+"&key=KK",
+    void gotoPlace(String place_id) {
+        StringRequest request = new StringRequest(0, "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + place_id + "&key=KK",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
+                        try {
                             JSONObject js = new JSONObject(response);
                             JSONObject location = js.getJSONObject("result").
                                     getJSONObject("geometry").getJSONObject("location");
                             Double lat = location.getDouble("lat");
                             Double lng = location.getDouble("lng");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat,lng),17));
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), 17));
 
                         } catch (JSONException e) {
 
@@ -302,4 +390,6 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
 
         return poly;
     }
+
+
 }

@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class Login extends BaseActivity {
     public static String mail, pass;
-    public static User user;
+    public static User user=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

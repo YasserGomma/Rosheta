@@ -62,6 +62,7 @@ public class ChooseScreen extends BaseActivity {
                     call.enqueue(new Callback<User>() {
                         @Override
                         public void onResponse(Call<User> call, Response<User> response) {
+                            if(Login.user==null)
                             Login.user = response.body();
                             go_screen(ChooseScreen.this, Home.class);
                         }

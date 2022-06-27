@@ -9,33 +9,101 @@
     tools:context=".views.pages.c_home.Home">
 
     <RelativeLayout
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/home_header"
             layout="@layout/header_home" />
 
-        <TextView
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_below="@id/home_header"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/add">
+
+                <TextView
+                    android:id="@+id/clinics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Clinics"
+                    android:textColor="@color/primary_color2"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textSize="20sp"
+                    android:layout_marginVertical="10dp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_below="@id/clinics"
+                    android:clipToPadding="false"
+                    android:id="@+id/rv_home_clinics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/pharmacies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pharmacies"
+                    android:layout_below="@id/rv_home_clinics"
+                    android:textColor="@color/primary_color2"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textSize="20sp"
+                    android:layout_marginVertical="10dp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_home_pharmacies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pharmacies"
+                    android:layout_marginHorizontal="10dp"
+                    android:clipToPadding="false" />
+                <Button
+                    android:id="@+id/btnGetLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rv_home_pharmacies"
+                    android:text="get ur location" />
+
+                <TextView
+                    android:id="@+id/lbl_src"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rv_home_pharmacies"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:maxWidth="200dp"
+                    android:text="get ur location" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/lbl_src"
+                    android:layout_marginTop="30dp" />
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_alignParentBottom="true"
             android:id="@+id/add"
+            android:textColor="@color/black"
+            android:textSize="100dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="20dp"
-            android:text="Hello"></TextView>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/add"
-            >
-            <fragment
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
+            android:layout_marginBottom="100dp"
+            android:text=""/>
 
 
 
