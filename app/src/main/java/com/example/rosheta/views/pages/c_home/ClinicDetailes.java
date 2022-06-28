@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Clinc;
-import com.example.rosheta.data.source.remote.ExaminationRequest;
+import com.example.rosheta.data.models.remote.Clinc;
+import com.example.rosheta.data.models.remote.ExaminationRequest;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.ClinicAdapter;
 import com.example.rosheta.views.adapters.ExaminationRequestAdapter;

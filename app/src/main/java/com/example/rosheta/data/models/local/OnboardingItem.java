@@ -1,4 +1,4 @@
-package com.example.rosheta.data.models;
+package com.example.rosheta.data.models.local;
 
 public class OnboardingItem {
 

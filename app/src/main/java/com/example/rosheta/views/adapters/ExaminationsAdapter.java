@@ -1,5 +1,4 @@
 package com.example.rosheta.views.adapters;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,11 +11,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Examination;
+import com.example.rosheta.data.models.remote.Examination;
 import com.example.rosheta.views.pages.c_home.ExaminationDetails;
 
 import java.util.ArrayList;
-
 public class ExaminationsAdapter extends RecyclerView.Adapter<ExaminationsAdapter.ExaminationItemViewHolder> {
     public static String examinationID_Adapter = "";
     public static Examination examination = new Examination();
@@ -28,15 +26,12 @@ public class ExaminationsAdapter extends RecyclerView.Adapter<ExaminationsAdapte
         this.context = context;
 
     }
-
     @Override
     public ExaminationItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_examination, null, false);
         ExaminationItemViewHolder examinationItemViewHolder = new ExaminationItemViewHolder(v);
         return examinationItemViewHolder;
     }
-
-
     @Override
     public void onBindViewHolder(ExaminationItemViewHolder holder, int position) {
 

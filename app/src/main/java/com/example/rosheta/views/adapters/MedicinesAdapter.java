@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Medicines;
+import com.example.rosheta.data.models.remote.Medicines;
 
 import java.util.ArrayList;
 

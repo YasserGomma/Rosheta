@@ -1,5 +1,4 @@
 package com.example.rosheta.views.pages.c_home;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Examination;
+import com.example.rosheta.data.models.remote.Examination;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.ExaminationsAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
@@ -21,7 +20,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class Examinations extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +43,8 @@ public class Examinations extends AppCompatActivity {
                 recyclerView.setAdapter(examinationsAdapter);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
             }
-
             @Override
             public void onFailure(Call<ArrayList<Examination>> call, Throwable t) {
-
             }
         });
     }

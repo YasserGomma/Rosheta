@@ -29,10 +29,10 @@
         android:id="@+id/layoutOnboardingIndicators"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="150dp"
         android:orientation="horizontal"
         android:padding="15dp"
-        android:translationX="135dp"
+        android:translationX="145dp"
         android:translationY="-130dp"
         app:layout_constraintBottom_toTopOf="@id/btnOnboardingAction"
         tools:ignore="MissingConstraints" />

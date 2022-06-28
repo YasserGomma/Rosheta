@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.User;
+import com.example.rosheta.data.models.remote.User;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.components.TwoTexts;
 import com.example.rosheta.views.networking.RetrofitCreation;

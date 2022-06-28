@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rosheta.data.source.remote.User;
+import com.example.rosheta.data.models.remote.User;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.networking.RetrofitCreation;
 

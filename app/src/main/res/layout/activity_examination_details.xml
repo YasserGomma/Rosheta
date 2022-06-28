@@ -160,6 +160,7 @@
             <com.example.rosheta.views.widgets.MainButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/btn_examination_details_buy"
                 android:layout_below="@id/tv_examination_details_notes"
                 android:layout_marginTop="20dp"
                 android:text="Get your Medicines now!" />

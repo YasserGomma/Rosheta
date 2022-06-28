@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Report;
+import com.example.rosheta.data.models.remote.Report;
 
 import java.util.ArrayList;
 

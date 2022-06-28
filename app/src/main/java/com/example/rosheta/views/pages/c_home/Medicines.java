@@ -10,14 +10,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.AllMedicines;
+import com.example.rosheta.data.models.remote.AllMedicines;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.AllMedicinesAdapter;
-import com.example.rosheta.views.adapters.ExaminationsAdapter;
-import com.example.rosheta.views.adapters.MedicinesAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.b_account.Login;
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rosheta.R;
 import com.example.rosheta.interfaces.CallBack;
+import com.example.rosheta.views.pages.c_home.Home;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 import java.util.Locale;
@@ -121,6 +124,19 @@ public class BaseActivity extends AppCompatActivity {
             v.requestFocus();
 
 
+    }
+    public static Double calcDistance(LatLng a,LatLng b)
+    {
+        Location startPoint=new Location("locationA");
+        startPoint.setLatitude(a.latitude);
+        startPoint.setLongitude(a.longitude);
+
+        Location endPoint=new Location("locationA");
+        endPoint.setLatitude(b.latitude);
+        endPoint.setLongitude(b.longitude);
+
+        double distance=startPoint.distanceTo(endPoint);
+        return distance;
     }
 
 

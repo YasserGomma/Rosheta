@@ -12,7 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.ExaminationRequest;
+import com.example.rosheta.data.models.remote.ExaminationRequest;
 import com.example.rosheta.views.pages.parents.BaseActivity;
 
 import java.util.ArrayList;

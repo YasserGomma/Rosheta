@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.models.OnboardingItem;
-import com.example.rosheta.data.source.local.OnboardingData;
+import com.example.rosheta.data.models.local.OnboardingItem;
+import com.example.rosheta.data.models.local.OnboardingData;
 import com.example.rosheta.views.adapters.OnboardingAdapter;
 import com.example.rosheta.views.pages.b_account.SignUp;
 import com.example.rosheta.views.pages.parents.BaseActivity;

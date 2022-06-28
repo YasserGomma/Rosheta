@@ -1,4 +1,4 @@
-package com.example.rosheta.data.source.remote;
+package com.example.rosheta.data.models.remote;
 
 import java.util.Date;
 

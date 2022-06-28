@@ -1,7 +1,6 @@
-package com.example.rosheta.data.source.local;
+package com.example.rosheta.data.models.local;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.models.OnboardingItem;
 
 import java.util.ArrayList;
 

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.ExaminationRequest;
+import com.example.rosheta.data.models.remote.ExaminationRequest;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.ExaminationRequestAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;

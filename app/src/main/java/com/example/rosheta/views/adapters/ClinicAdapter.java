@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.views.pages.c_home.ClinicDetailes;
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Clinc;
+import com.example.rosheta.data.models.remote.Clinc;
 import com.example.rosheta.views.pages.c_home.Home;
+import com.example.rosheta.views.pages.parents.BaseActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -47,7 +48,12 @@ public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.ClinicItem
         holder.tv_clinic_name.setText(item.getLName());
         holder.tv_doc_name.setText(item.getName());
         holder.tv_doc_sp.setText(item.getSName());
-        holder.tv_clinic_dis.setText(item.getDistance() + "");
+        LatLng cur = new LatLng(Double.parseDouble(item.getLat()),Double.parseDouble(item.getLng()));
+        LatLng a,b;
+        a=new LatLng(Double.parseDouble(item.getLat()),Double.parseDouble(item.getLng()));
+        b=new LatLng(Home.lat,Home.longi);
+        double distance=BaseActivity.calcDistance(a,b);
+        holder.tv_clinic_dis.setText(((int)distance>=1000?(int)distance/1000+","+(int)distance%1000+" Km":(int)distance+"M"));
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.models.OnboardingItem;
+import com.example.rosheta.data.models.local.OnboardingItem;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
 package com.example.rosheta.views.pages.b_account;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.User;
+import com.example.rosheta.data.models.remote.User;
 import com.example.rosheta.interfaces.CallBack;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.components.InputField;
@@ -27,19 +28,12 @@ public class Login extends BaseActivity {
     public static String mail, pass;
     public static User user=null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Go back from hearer button
-        findViewById(R.id.btn_back_header_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Login.super.onBackPressed();
-            }
-        });
         InputField email, password;
         TwoTexts signup;
         EditText email_et, password_et;
@@ -51,7 +45,6 @@ public class Login extends BaseActivity {
 
         email_et = email.findViewById(R.id.input_field_edit_text);
         password_et = password.findViewById(R.id.input_field_edit_text);
-
 
         login = findViewById(R.id.btn_login_login);
         login.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +68,15 @@ public class Login extends BaseActivity {
                             "Please enter your email and password",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        //Go back from hearer button
+        findViewById(R.id.btn_back_header_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Login.super.onBackPressed();
             }
         });
     }
@@ -107,4 +109,5 @@ public class Login extends BaseActivity {
         });
 
     }
+
 }

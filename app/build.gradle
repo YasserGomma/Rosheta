@@ -85,6 +85,23 @@ dependencies {
 
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
 
-    
+    //Test base
+    testImplementation("junit:junit:4.12")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.3")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.0.3")
+    androidTestImplementation("androidx.test:runner:1.2.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+
+    //Unit Tests
+    testImplementation("org.mockito:mockito-core:3.0.0")
+    testImplementation("org.mockito:mockito-inline:3.0.0") //support for kotlin final classes
+
+    //Android UI Test
+    androidTestImplementation("org.robolectric:robolectric:3.7.1")
+
+    implementation ("androidmads.library.qrgenearator:QRGenearator:1.0.3")
+
+
+
 
 }

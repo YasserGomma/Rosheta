@@ -8,9 +8,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
@@ -36,8 +37,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Clinc;
-import com.example.rosheta.data.source.remote.Pharmacy;
+import com.example.rosheta.data.models.remote.Clinc;
+import com.example.rosheta.data.models.remote.Pharmacy;
 import com.example.rosheta.interfaces.CallBack;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.ClinicAdapter;
@@ -45,15 +46,13 @@ import com.example.rosheta.views.adapters.PharmacyAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.a_intro.ChooseScreen;
 import com.example.rosheta.views.pages.b_account.Login;
+import com.example.rosheta.views.pages.b_account.QrScreen;
 import com.example.rosheta.views.pages.parents.BaseActivity;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.navigation.NavigationView;
 
@@ -62,6 +61,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,8 +71,8 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
     TextView showLocation;
     LocationManager locationManager;
     String latitude, longitude;
-    double lat ;
-    double longi;
+    public static double lat ;
+    public static double longi;
     SupportMapFragment map;
     int count = 0;
 
@@ -105,8 +105,8 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
             }
         });
 
-
-        BaseActivity.delay(500, new CallBack() {
+        if(locationManager==null)
+        BaseActivity.delay(400, new CallBack() {
             @Override
             public void onFinished() {
                 btnGetLocation.performClick();
@@ -114,54 +114,59 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         });
 
 
-        //Clinics
-        RecyclerView recyclerView = findViewById(R.id.rv_home_clinics);
-        StaggeredGridLayoutManager layoutManager
-                = new StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
-        EndPoints Api = RetrofitCreation.getInstance();
-        ArrayList<Clinc> clincs = new ArrayList<>();
-        Call<ArrayList<Clinc>> call = Api.getClinic("clinic", "");
-        call.enqueue(new Callback<ArrayList<Clinc>>() {
+        delay(600, new CallBack() {
             @Override
-            public void onResponse(Call<ArrayList<Clinc>> call, retrofit2.Response<ArrayList<Clinc>> response) {
-                for (int i = 0; i < response.body().size(); i++)
-                    clincs.add(response.body().get(i));
-                ClinicAdapter clinicAdapter = new ClinicAdapter(Home.this, clincs);
-                recyclerView.setAdapter(clinicAdapter);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-            }
+            public void onFinished() {
+                //Clinics
+                RecyclerView recyclerView = findViewById(R.id.rv_home_clinics);
+                StaggeredGridLayoutManager layoutManager
+                        = new StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL);
+                recyclerView.setLayoutManager(layoutManager);
+                EndPoints Api = RetrofitCreation.getInstance();
+                ArrayList<Clinc> clincs = new ArrayList<>();
+                Call<ArrayList<Clinc>> call = Api.getClinic("clinic", "");
+                call.enqueue(new Callback<ArrayList<Clinc>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Clinc>> call, retrofit2.Response<ArrayList<Clinc>> response) {
+                        for (int i = 0; i < response.body().size(); i++)
+                            clincs.add(response.body().get(i));
+                        ClinicAdapter clinicAdapter = new ClinicAdapter(Home.this, clincs);
+                        recyclerView.setAdapter(clinicAdapter);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    }
 
-            @Override
-            public void onFailure(Call<ArrayList<Clinc>> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<ArrayList<Clinc>> call, Throwable t) {
+
+                    }
+                });
+
+                //Pharmacies
+                RecyclerView recyclerView2 = findViewById(R.id.rv_home_pharmacies);
+                StaggeredGridLayoutManager layoutManager2
+                        = new StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL);
+                recyclerView2.setLayoutManager(layoutManager2);
+                ArrayList<Pharmacy> pharmacies = new ArrayList<>();
+                Call<ArrayList<Pharmacy>> call2 = Api.getPharmacy("pharmacy", "");
+                call2.enqueue(new Callback<ArrayList<Pharmacy>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Pharmacy>> call, retrofit2.Response<ArrayList<Pharmacy>> response) {
+                        for (int i = 0; i < response.body().size(); i++)
+                            pharmacies.add(response.body().get(i));
+                        PharmacyAdapter pharmacyAdapter = new PharmacyAdapter(Home.this, pharmacies);
+                        recyclerView2.setAdapter(pharmacyAdapter);
+                        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Pharmacy>> call, Throwable t) {
+
+                    }
+                });
+
 
             }
         });
-
-        //Pharmacies
-        RecyclerView recyclerView2 = findViewById(R.id.rv_home_pharmacies);
-        StaggeredGridLayoutManager layoutManager2
-                = new StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL);
-        recyclerView2.setLayoutManager(layoutManager2);
-        ArrayList<Pharmacy> pharmacies = new ArrayList<>();
-        Call<ArrayList<Pharmacy>> call2 = Api.getPharmacy("pharmacy", "");
-        call2.enqueue(new Callback<ArrayList<Pharmacy>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Pharmacy>> call, retrofit2.Response<ArrayList<Pharmacy>> response) {
-                for (int i = 0; i < response.body().size(); i++)
-                    pharmacies.add(response.body().get(i));
-                PharmacyAdapter pharmacyAdapter = new PharmacyAdapter(Home.this, pharmacies);
-                recyclerView2.setAdapter(pharmacyAdapter);
-                recyclerView2.setItemAnimator(new DefaultItemAnimator());
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Pharmacy>> call, Throwable t) {
-
-            }
-        });
-
-
         NavigationView navigationView = findViewById(R.id.navigationView);
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.tv_header_menu_name);
@@ -236,6 +241,9 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
             case R.id.medicines:
                 go_screen(Home.this, Medicines.class);
                 break;
+            case R.id.qr_code:
+                go_screen(Home.this, QrScreen.class);
+                break;
             default:
                 break;
 
@@ -255,7 +263,15 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
             public void onMapClick(LatLng latLng) {
 
 
-
+            }
+        });
+        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                String uri = "http://maps.google.com/maps?saddr=" + lat + "," + longi + "&daddr=" + latLng.latitude + "," + latLng.longitude;
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
             }
         });
         googleMap.setMyLocationEnabled(true);

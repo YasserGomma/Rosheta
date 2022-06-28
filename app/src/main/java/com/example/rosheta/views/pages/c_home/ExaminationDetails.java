@@ -1,22 +1,25 @@
 package com.example.rosheta.views.pages.c_home;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rosheta.views.pages.b_account.BuyRosheta;
 import com.example.rosheta.R;
-import com.example.rosheta.data.source.remote.Examination;
-import com.example.rosheta.data.source.remote.Medicines;
-import com.example.rosheta.data.source.remote.Report;
+import com.example.rosheta.data.models.remote.Examination;
+import com.example.rosheta.data.models.remote.Medicines;
+import com.example.rosheta.data.models.remote.Report;
 import com.example.rosheta.interfaces.EndPoints;
 import com.example.rosheta.views.adapters.ExaminationsAdapter;
 import com.example.rosheta.views.adapters.MedicinesAdapter;
 import com.example.rosheta.views.adapters.ReportsAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
+import com.example.rosheta.views.pages.parents.BaseActivity;
 
 import java.util.ArrayList;
 
@@ -24,8 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExaminationDetails extends AppCompatActivity {
-
+public class ExaminationDetails extends BaseActivity {
+    public static ArrayList<Medicines> medicines = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +57,6 @@ public class ExaminationDetails extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         EndPoints Api = RetrofitCreation.getInstance();
-        ArrayList<Medicines> medicines = new ArrayList<>();
         Call<ArrayList<Medicines>> call = Api.getMedicines(ExaminationsAdapter.examinationID_Adapter);
         call.enqueue(new Callback<ArrayList<Medicines>>() {
             @Override
@@ -93,6 +95,15 @@ public class ExaminationDetails extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<Report>> call, Throwable t) {
 
+            }
+        });
+
+
+        Button btn_examination_details_buy=findViewById(R.id.btn_examination_details_buy);
+        btn_examination_details_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                go_screen(ExaminationDetails.this, BuyRosheta.class);
             }
         });
 
