@@ -33,6 +33,15 @@ public class ExaminationDetails extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examination_details);
+
+        findViewById(R.id.btn_back_header_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                ExaminationDetails.super.onBackPressed();
+            }
+        });
+
         TextView tv_examination_details_doc_name, tv_examination_details_id,
                 tv_examination_details_date, tv_examination_details_doc_sp,
                 tv_examination_details_notes;

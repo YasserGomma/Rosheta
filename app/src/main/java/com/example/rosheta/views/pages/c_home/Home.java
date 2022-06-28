@@ -46,6 +46,7 @@ import com.example.rosheta.views.adapters.PharmacyAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.a_intro.ChooseScreen;
 import com.example.rosheta.views.pages.b_account.Login;
+import com.example.rosheta.views.pages.b_account.Profile;
 import com.example.rosheta.views.pages.b_account.QrScreen;
 import com.example.rosheta.views.pages.parents.BaseActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -91,6 +92,7 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
         ActivityCompat.requestPermissions( this,
                 new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
         showLocation = findViewById(R.id.lbl_src);
+        showLocation.setSelected(true);
 
         btnGetLocation = findViewById(R.id.btnGetLocation);
         btnGetLocation.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +245,9 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
                 break;
             case R.id.qr_code:
                 go_screen(Home.this, QrScreen.class);
+                break;
+            case R.id.dashboard:
+                go_screen(Home.this, Profile.class);
                 break;
             default:
                 break;

@@ -7,8 +7,9 @@
     tools:context=".views.pages.c_home.ClinicDetailes">
 
 
-    <com.example.rosheta.views.components.HeaderBar
+    <include
         android:id="@+id/header"
+        layout="@layout/header_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp" />

@@ -3,6 +3,7 @@ package com.example.rosheta.views.pages.c_home;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,8 @@ public class ExaminationRequests extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+     
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examination_requests);
         RecyclerView recyclerView = findViewById(R.id.rv_examinations_request);

@@ -7,8 +7,9 @@
     android:layout_marginHorizontal="10dp"
     tools:context=".views.pages.c_home.Examinations">
 
-    <com.example.rosheta.views.components.HeaderBar
+    <include
         android:id="@+id/examinations_header"
+        layout="@layout/header_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp" />

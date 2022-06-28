@@ -20,6 +20,7 @@ import com.example.rosheta.views.adapters.ClinicAdapter;
 import com.example.rosheta.views.adapters.ExaminationRequestAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.b_account.Login;
+import com.example.rosheta.views.pages.b_account.Profile;
 import com.example.rosheta.views.pages.parents.BaseActivity;
 
 import java.util.ArrayList;
@@ -34,7 +35,13 @@ public class ClinicDetailes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_detailes);
-
+        findViewById(R.id.btn_back_header_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                ClinicDetailes.super.onBackPressed();
+            }
+        });
 
         TextView clinicName,docName,address;
         clinicName=findViewById(R.id.clinic_details_name);

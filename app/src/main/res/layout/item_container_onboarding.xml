@@ -22,19 +22,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/sofiapro_reguler"
         android:gravity="center"
         android:lineSpacingExtra="10dp"
         android:textColor="#131A38"
-        android:layout_marginBottom="30dp"
         android:textSize="30dp" />
 
     <TextView
-        android:layout_marginBottom="-40dp"
         android:id="@+id/textDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="-40dp"
         android:fontFamily="@font/sofiapro_reguler"
         android:gravity="center"
         android:lineSpacingExtra="8dp"

@@ -15,8 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.example.rosheta.views.components.HeaderBar
+            <include
                 android:id="@+id/examinations_request_header"
+                layout="@layout/header_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

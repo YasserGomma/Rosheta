@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="20dp"
+    android:background="@drawable/profile_background"
+    tools:context=".views.pages.b_account.Profile">
+
+    <include
+        android:id="@+id/header_cart"
+        layout="@layout/header_back" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_profile_pic"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_below="@id/header_cart"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/profile_pic_bg"
+        android:outlineSpotShadowColor="@color/primary_color"
+        android:padding="10dp"
+        android:src="@drawable/profile_pic"
+        app:riv_corner_radius="100dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_profile_change"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/iv_profile_pic"
+        android:layout_marginLeft="-50dp"
+        android:layout_marginTop="-40dp"
+        android:layout_toRightOf="@+id/iv_profile_pic"
+        android:background="@drawable/profile_pic_bg"
+        android:clickable="true"
+        android:src="@drawable/cam"
+        app:riv_corner_radius="100dp" />
+
+    <com.example.rosheta.views.widgets.PageTitleText
+        android:id="@+id/tv_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_profile_pic"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text=""
+        app:pt_text_size="20" />
+
+    <com.example.rosheta.views.widgets.DescriptionPageText
+        android:id="@+id/tv_profile_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_profile_name"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Edit Profile" />
+
+    <com.example.rosheta.views.components.InputField
+        android:id="@+id/if_profile_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_profile_edit"
+        app:if_label="Full name"
+        app:if_text="" />
+
+    <com.example.rosheta.views.components.InputField
+        android:id="@+id/if_profile_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/if_profile_full_name"
+        app:if_label="Email"
+        app:if_text="" />
+
+    <com.example.rosheta.views.components.InputField
+        android:id="@+id/if_profile_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/if_profile_mail"
+        app:if_label="National ID"
+        app:if_text="" />
+
+
+</RelativeLayout>

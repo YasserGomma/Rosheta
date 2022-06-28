@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rosheta.data.models.remote.Pharmacy;
 import com.example.rosheta.views.pages.c_home.ClinicDetailes;
 import com.example.rosheta.R;
 import com.example.rosheta.data.models.remote.Clinc;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.ClinicItemViewHolder> {
     public static String clinicID_Adapter = "";
@@ -31,6 +34,24 @@ public class ClinicAdapter extends RecyclerView.Adapter<ClinicAdapter.ClinicItem
     public ClinicAdapter(Context context, ArrayList<Clinc> clincs) {
         this.clincs = clincs;
         this.context = context;
+        Collections.sort(clincs,new Comparator<Clinc>(){
+            @Override
+            public int compare(final Clinc lhs,Clinc rhs) {
+                //TODO return 1 if rhs should be before lhs
+                //     return -1 if lhs should be before rhs
+                //     return 0 otherwise (meaning the order stays the same)
+                LatLng L = new LatLng(Double.parseDouble(lhs.getLat()),Double.parseDouble(lhs.getLng()));
+                LatLng R = new LatLng(Double.parseDouble(rhs.getLat()),Double.parseDouble(rhs.getLng()));
+                LatLng dest=new LatLng(Home.lat,Home.longi);
+
+                double distancel=BaseActivity.calcDistance(dest,L);
+                double distancer=BaseActivity.calcDistance(dest,R);
+
+                if (distancel>distancer)
+                    return 1;
+                return -1;
+            }
+        });
 
     }
 

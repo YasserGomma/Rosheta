@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.PharmacyItemViewHolder> {
     public static String pharmacyID_Adapter = "";
@@ -33,6 +35,25 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Pharma
     public PharmacyAdapter(Context context, ArrayList<Pharmacy> pharmacies) {
         this.pharmacies = pharmacies;
         this.context = context;
+        Collections.sort(pharmacies,new Comparator<Pharmacy>(){
+            @Override
+            public int compare(final Pharmacy lhs,Pharmacy rhs) {
+                //TODO return 1 if rhs should be before lhs
+                //     return -1 if lhs should be before rhs
+                //     return 0 otherwise (meaning the order stays the same)
+                LatLng L = new LatLng(Double.parseDouble(lhs.getLat()),Double.parseDouble(lhs.getLng()));
+                LatLng R = new LatLng(Double.parseDouble(rhs.getLat()),Double.parseDouble(rhs.getLng()));
+                LatLng dest=new LatLng(Home.lat,Home.longi);
+
+
+                double distancel=BaseActivity.calcDistance(dest,L);
+                double distancer=BaseActivity.calcDistance(dest,R);
+
+                if (distancel>distancer)
+                    return 1;
+                return -1;
+            }
+        });
 
     }
 

@@ -7,8 +7,9 @@
     android:background="@drawable/background"
     tools:context=".views.pages.c_home.ExaminationDetails">
 
-    <com.example.rosheta.views.components.HeaderBar
+    <include
         android:id="@+id/examination_details_header"
+        layout="@layout/header_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp" />
@@ -158,9 +159,9 @@
                 android:textSize="18sp" />
 
             <com.example.rosheta.views.widgets.MainButton
+                android:id="@+id/btn_examination_details_buy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_examination_details_buy"
                 android:layout_below="@id/tv_examination_details_notes"
                 android:layout_marginTop="20dp"
                 android:text="Get your Medicines now!" />

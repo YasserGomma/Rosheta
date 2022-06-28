@@ -1,6 +1,7 @@
 package com.example.rosheta.views.pages.c_home;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -24,7 +25,16 @@ public class Examinations extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_examinations);
+        findViewById(R.id.btn_back_header_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Examinations.super.onBackPressed();
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.rv_examinations);
         StaggeredGridLayoutManager layoutManager
                 = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);

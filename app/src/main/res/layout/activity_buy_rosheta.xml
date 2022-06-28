@@ -6,56 +6,55 @@
     android:layout_height="match_parent"
     android:background="@drawable/welcome_lineargradient"
     tools:context=".views.pages.b_account.BuyRosheta">
- <ScrollView
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     >
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         >
-         <!--We are using this image
-     view to display our QR code-->
-         <ImageView
-             android:id="@+id/idIVQrcode"
-             android:layout_width="300dp"
-             android:layout_height="300dp"
-             android:layout_centerHorizontal="true"
-             android:layout_marginTop="50dp"
-             />
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_below="@id/idIVQrcode"
-             android:text="Scan to show your mediciens"
-             android:layout_centerHorizontal="true"
-             android:layout_marginTop="10dp"
-             android:textColor="@color/primary_color2"
-             android:fontFamily="@font/opensans_bold"
-             android:textSize="20sp"
-             android:id="@+id/scan"
-             />
 
-         <com.example.rosheta.views.widgets.MainEditText
-             android:id="@+id/et_buy_search"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_below="@id/scan"
-             android:layout_marginHorizontal="10dp"
-             android:layout_marginTop="20dp"
-             android:drawableLeft="@drawable/search"
-             android:drawablePadding="10dp"
-             android:hint="Find a pharmacy.."
-             app:text_size="20" />
-         <androidx.recyclerview.widget.RecyclerView
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:layout_below="@id/et_buy_search"
-             android:layout_marginTop="10dp"
-             android:layout_marginHorizontal="10dp"
-             android:clipToPadding="false"
-             android:id="@+id/rv_buy"
-             />
-     </RelativeLayout>
- </ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--We are using this image
+        view to display our QR code-->
+            <ImageView
+                android:id="@+id/idIVQrcode"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp" />
+
+            <TextView
+                android:id="@+id/scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idIVQrcode"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="Scan to show your mediciens"
+                android:textColor="@color/primary_color2"
+                android:textSize="20sp" />
+
+            <com.example.rosheta.views.widgets.MainEditText
+                android:id="@+id/et_buy_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/scan"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/search"
+                android:drawablePadding="10dp"
+                android:hint="Find a pharmacy.."
+                app:text_size="20" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_buy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/et_buy_search"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false" />
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
