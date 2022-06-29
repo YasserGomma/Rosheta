@@ -249,6 +249,9 @@ public class Home extends BaseActivity implements OnMapReadyCallback {
             case R.id.dashboard:
                 go_screen(Home.this, Profile.class);
                 break;
+            case R.id.diseases:
+                go_screen(Home.this, DiseasesUser.class);
+                break;
             default:
                 break;
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.pages.c_home.DiseasesUser">
+
+    <TextView
+        android:id="@+id/diseases_m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/opensans_bold"
+        android:text="Your Diseases"
+        android:textColor="@color/primary_color2"
+        android:textSize="20sp" />
+
+    <com.example.rosheta.views.widgets.MainEditText
+        android:id="@+id/diseases_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/diseases_m"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:drawableLeft="@drawable/search"
+        android:drawablePadding="10dp"
+        android:hint="Find a diseases.."
+        app:text_size="20" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_diseases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/diseases_search"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp" />
+
+</RelativeLayout>

@@ -21,6 +21,7 @@ import com.example.rosheta.R;
 import com.example.rosheta.data.models.remote.Medicines;
 import com.example.rosheta.data.models.remote.Pharmacy;
 import com.example.rosheta.interfaces.EndPoints;
+import com.example.rosheta.views.adapters.ExaminationsAdapter;
 import com.example.rosheta.views.adapters.PharmacyAdapter;
 import com.example.rosheta.views.networking.RetrofitCreation;
 import com.example.rosheta.views.pages.c_home.ExaminationDetails;
@@ -74,7 +75,7 @@ public class BuyRosheta extends AppCompatActivity {
             mediciens += (idx + " : " + cur.getName() + "\n");
             idx++;
         }
-        qrgEncoder = new QRGEncoder(mediciens, null, QRGContents.Type.TEXT, dimen);
+        qrgEncoder = new QRGEncoder(ExaminationsAdapter.examination.getId()+"", null, QRGContents.Type.TEXT, dimen);
         try {
             // getting our qrcode in the form of bitmap.
             bitmap = qrgEncoder.encodeAsBitmap();

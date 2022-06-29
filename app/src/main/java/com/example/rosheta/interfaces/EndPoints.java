@@ -1,5 +1,6 @@
 package com.example.rosheta.interfaces;
 
+import com.example.rosheta.data.models.remote.AllDiseases;
 import com.example.rosheta.data.models.remote.AllMedicines;
 import com.example.rosheta.data.models.remote.Clinc;
 import com.example.rosheta.data.models.remote.Examination;
@@ -48,4 +49,7 @@ public interface EndPoints {
     @FormUrlEncoded
     @POST("user/medicines")
     Call<ArrayList<AllMedicines>> getAllMedicines(@Field("user_id") String user_id, @Field("search") String search);
+    @FormUrlEncoded
+    @POST("user/diseases")
+    Call<ArrayList<AllDiseases>> getAllDiseases(@Field("user_id") String user_id, @Field("search") String search);
 }
